@@ -1,16 +1,65 @@
 package com.pp.common.constant.util;
 
-import com.pp.common.constant.result132.*;
 import com.pp.common.constant.resultCognize.*;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
  * Created by asus on 2018/1/15.
  */
 public class GetScaleUtil {
+
+    public static String getStart(Date birth){
+        String start = "";
+        Date now = new Date();
+        Integer days = (getDiffDay(birth,now));
+        if(16<=days && days <=45){
+            start = "A";
+        }else if(46<=days && days <=75){
+            start = "B";
+        }else if(76<=days && days <=105){
+            start = "C";
+        }else if(106<=days && days <=135){
+            start = "D";
+        }else  if(136<=days && days <=165){
+            start = "E";
+        }else if(166<=days && days <=195){
+            start = "F";
+        }else if(196<=days && days <=270){
+            start = "G";
+        }else if(271<=days && days <=330){
+            start = "H";
+        }else if(331<=days && days <=405){
+            start = "I";
+        }else if(406<=days && days <=495){
+            start = "J";
+        }else if(496<=days && days <=585){
+            start = "K";
+        }else if(586<=days && days <=675){
+            start = "L";
+        }else if(676<=days && days <=765){
+            start = "M";
+        }else if(766<=days && days <=855){
+            start = "N";
+        }else if(856<=days && days <=990){
+            start = "O";
+        }else if(991<=days && days <=1170){
+            start = "P";
+        }else if(1171<=days && days <=1275){
+            start = "Q";
+        }
+        return start;
+    }
+
+    public static Integer getDiffDay(Date d1, Date d2){
+        Long days = 0l;
+        try {
+            days = (d2.getTime()-d1.getTime())/(1000*3600*24);
+        }catch (Exception e){
+
+        }
+        return days.intValue();
+    }
 
     public static String getScale(Date birth,Integer score){
         String scale = "-1";
@@ -116,26 +165,4 @@ public class GetScaleUtil {
         return scale;
     }
 
-    public static Integer getDiffDay(Date d1, Date d2){
-        Long days = 0l;
-        try {
-            days = (d2.getTime()-d1.getTime())/(1000*3600*24);
-        }catch (Exception e){
-
-        }
-        return days.intValue();
-    }
-
-//    public static void main(String[] args) throws ParseException {
-//        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");//设置日期格式
-//        Date birth = df.parse("2008-01-16");
-//        String score = getStandardScore(birth,89);
-//        System.out.println("score是："+score);
-//
-//        String temp = "-";
-//        String arr[] = temp.split("-");
-//        if (arr==null || arr.length==0){
-//            System.out.println("---------------------");
-//        }
-//    }
 }
